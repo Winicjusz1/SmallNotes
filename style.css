@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgb(228, 226, 226);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    height: 120px;
+}
+
+.menu button,
+.note-panel .save,
+.note-panel .cancel {
+    padding: 12px 25px;
+    background: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color .3s, color .3s; /* kolor przycisku i kolor tekstu i obrazków w przycisku */
+}
+
+.menu button:hover, /* !!!!!!!! odwołanie bezpośrednio do tagu butto w tej sekcji a poniżej do innych buttonów ale już wołajac je po klasie */ 
+.note-panel .save:hover,
+.note-panel .cancel:hover {
+    background-color: #333;
+    color: #ddd;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
+.add {
+    margin-right: 20px;
+}
+
+.note-area {
+    display: flex;
+    align-items: start; /* !!!!!!!!!! aby notatki miały różną  dłogość zależną od ilości tekstu  a nie  aby wszystkie były o tej samej długości  zwłaszcza gdy pierwsza byłaby najdłuższa */ 
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.note {
+    margin: 40px 20px;
+    width: 240px;
+    background-color: rgb(255, 151, 15);
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.note-header { /* odwołanie do nagłówka karty - notatki */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, .06); /* kolor zerowy - żaden i 6 % przeźroczystości - dlatego korzysta z żóltego pod spodem i do trochę przyciemnia */ 
+}
+
+.note-header .delete-note {
+    background: none;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.note-body {
+    padding: 20px 15px;
+    font-size: 16px;
+}
+
+.note-panel { /* tu stylowanie całego panelu */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* aby  elementy nie były obok siebie ale w kolumnie w pionie*/ 
+    position: absolute;
+    top: 50%;/*!!!!!!!!!!!!!!!!!!!!!!  top left  wraz z transform o tych samych wartościach ustawiaja ze ten panel zawsze będzi na  środku */ 
+    left: 50%;/*!!!!!!!!!!!!!!!!!!!!!!  top left  wraz z transform o tych samych wartościach ustawiaja ze ten panel zawsze będzi na  środku */
+    transform: translate(-50%, -50%); /*!!!!!!!!!!!!!!!!!!!!!!  top left  wraz z transform o tych samych wartościach ustawiaja ze ten panel zawsze będzi na  środku */
+    padding: 40px 0;
+    width: 600px;
+    background-color: #fff; /* biały kolor */ 
+    box-shadow: 0 0 10px black;
+    border-radius: 5px;
+}
+/* a tu styowanie  elementów panelu */ 
+
+.note-panel h2 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.note-panel label {
+    margin-bottom: 10px;
+}
+
+.note-panel #text,
+.note-panel #category {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 90%; /* !!!!!!!!to jest zabezpieczenei ze  pole do wpisywania nie wyjedzie nam poza pole note-panel !!!!!!!!!! */
+    max-height: 600px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+#text {
+    min-height:250px;
+}
+
+.note-panel .error {
+    margin-bottom: 20px;
+    color: rgb(233, 5, 5);
+    visibility: hidden; /* !!!!!!chowamy jego wyświetlanie bo będziemy uruchamiac jego wyswietlanie  z js. */ 
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: overline;
+}
